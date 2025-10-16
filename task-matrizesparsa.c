@@ -1,3 +1,5 @@
+/*Uma matriz esparsa guarda apenas os elementos diferentes de zero.
+Cada linha é uma lista encadeada com os elementos não nulos.*/
 #include <stdio.h>
 #include<malloc.h>
 #include <stdbool.h>
@@ -22,6 +24,7 @@ typedef struct {
     int ncolunas;
 } MATRIZ;
 
+//Inicializa a matriz com o número de linhas e colunas especificado.
 void inicializarMatriz(MATRIZ* m, int nlinhas, int ncolunas) {
     m->nlinhas = nlinhas;
     m->ncolunas = ncolunas;
@@ -34,7 +37,7 @@ void inicializarMatriz(MATRIZ* m, int nlinhas, int ncolunas) {
         m->A[i] = NULL;
     }
 }
-
+//Insere, atualiza ou remove um valor na matriz esparsa.
 bool atribuirValor(MATRIZ* m, int linha, int coluna, float valor) {
     if (linha < 0 || linha >= m->nlinhas || coluna < 0 || coluna >= m->ncolunas)
         return false;
@@ -77,6 +80,7 @@ bool atribuirValor(MATRIZ* m, int linha, int coluna, float valor) {
     return true;
 }
 
+//Acessa o valor na posição especificada da matriz.
 float acessarValor(MATRIZ* m, int linha, int coluna) {
     if (linha < 0 || linha >= m->nlinhas || coluna < 0 || coluna >= m->ncolunas)
         return 0;

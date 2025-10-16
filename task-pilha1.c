@@ -1,3 +1,4 @@
+//PILLHA (LIFO - Last In First Out)
 #include <stdio.h>
 #include <malloc.h>
 #include <stdbool.h>
@@ -49,6 +50,7 @@ void exibicao(PILHA *p){
     printf("\"\n");
 }
 
+//Insere um novo nó no topo da pilha.
 bool inserir(PILHA *p, REGISTRO reg){
     PONT novo = (PONT) malloc(sizeof(ELEMENTO));
     novo -> reg = reg;
@@ -59,6 +61,7 @@ bool inserir(PILHA *p, REGISTRO reg){
 
 bool remover(PILHA *p, REGISTRO *reg){
     if (p->topo == NULL) return false;
+    //Remove o nó do topo da pilha.
     *reg = p->topo->reg;
     PONT apagar = p->topo;
     p->topo = p->topo->prox;

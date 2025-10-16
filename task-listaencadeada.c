@@ -1,3 +1,5 @@
+/*A lista encadeada é uma sequência de elementos conectados por ponteiros.
+Ela permite inserir e remover em qualquer posição sem precisar mover todos os elementos (como num vetor).*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>

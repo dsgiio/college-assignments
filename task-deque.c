@@ -1,3 +1,5 @@
+/*Um deque é uma fila com duas pontas, onde você pode inserir e remover tanto no início quanto no fim.
+Ele é implementado com uma lista duplamente encadeada circular — ou seja, cada nó aponta para o anterior e o próximo, e o último volta para o primeiro.*/
 #include <stdio.h>
 #include<malloc.h>
 #include <stdbool.h>
@@ -9,8 +11,8 @@ typedef struct{
 }REGISTRO;
 
 typedef struct auxElem{
-    REGISTRO reg;
-    struct auxElem* ant;
+    REGISTRO reg; //valor armazenado
+    struct auxElem* ant; 
     struct auxElem* prox;
 }ELEMENTO;
 typedef ELEMENTO* PONT;
@@ -20,6 +22,7 @@ typedef struct {
     PONT cabeca;
 }DEQUE;
 
+//cria o nó cabeca e faz ele apontar para ele mesmo
 void inicializarDeque(DEQUE* d){
     d -> cabeca = (PONT) malloc(sizeof(ELEMENTO));
     d -> cabeca -> prox = d -> cabeca;
@@ -46,6 +49,7 @@ void exibicao(DEQUE *d){
     printf("\"\n");
 }
 
+//Insere um novo nó após a cabeça e atualiza os ponteiros.
 bool inserir(DEQUE *d, REGISTRO reg){
     PONT novo = (PONT)malloc(sizeof(ELEMENTO));
     novo -> reg = reg;
@@ -56,6 +60,7 @@ bool inserir(DEQUE *d, REGISTRO reg){
     return true;
 }
 
+//Remove o primeiro nó e atualiza os ponteiros da cabeça.
 bool remover(DEQUE *d, REGISTRO *reg){
     if(d->cabeca->prox == d->cabeca) return false;
     PONT apagar = d -> cabeca -> prox;

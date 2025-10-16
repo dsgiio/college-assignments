@@ -1,3 +1,4 @@
+//FILA (FIFO - First In First Out)
 #include <stdio.h>
 #include <malloc.h>
 #include <stdbool.h>
@@ -46,6 +47,7 @@ void exibicao(FILA *f){
     printf("\"\n");
 }
 
+//Insere um novo nó no fim da fila.
 bool inserirNaFila(FILA *f, REGISTRO reg) {
     PONT novo = (PONT)malloc(sizeof(ELEMENTO));
     if (novo == NULL) return false;  // check for malloc failure
@@ -61,6 +63,7 @@ bool inserirNaFila(FILA *f, REGISTRO reg) {
     return true;
 }
 
+//Remove o nó do início da fila.
 bool excluir(FILA *f, REGISTRO *reg) {
     if (f->inicio == NULL) return false;
     *reg = f->inicio->reg;
